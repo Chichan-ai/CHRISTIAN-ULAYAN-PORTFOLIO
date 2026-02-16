@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian Ulayan | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #121212;
+            --card-bg: #1e1e1f;
+            --card-item-bg: #2b2b2c;
+            --border-color: #383838;
+            --accent-gold: #f39c12;
+            --text-white: #fafafa;
+            --text-gray: #d6d6d6;
+            --text-dim: #9e9e9e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 25px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 280px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            position: sticky;
+            top: 40px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            background: var(--card-item-bg);
+            border-radius: 25px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; }
+        .name { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
+        .title-badge { background: var(--card-item-bg); font-size: 0.75rem; padding: 6px 12px; border-radius: 8px; color: var(--text-gray); display: inline-block; }
+
+        .info-list { text-align: left; margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px; }
+        .info-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .icon { width: 38px; height: 38px; background: var(--card-item-bg); border: 1px solid var(--border-color); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent-gold); }
+        .info-content p { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 2px; }
+        .info-content span { font-size: 0.85rem; color: var(--text-white); word-break: break-all; }
+
+        /* CONTENT AREA */
+        .content-card {
+            flex: 1;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            min-height: 600px;
+        }
+
+        .nav-tabs {
+            position: absolute;
+            top: 0; right: 0;
+            background: var(--card-item-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0 20px 0 20px;
+            display: flex;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .nav-link { padding: 15px 25px; cursor: pointer; font-size: 0.9rem; color: var(--text-gray); font-weight: 500; transition: 0.3s; }
+        .nav-link.active { color: var(--accent-gold); }
+
+        .page { display: none; animation: fadeIn 0.5s ease forwards; }
+        .page.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-title { font-size: 1.8rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 5px; background: var(--accent-gold); border-radius: 10px; }
+
+        /* BENTO GRID & CARDS */
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px; }
+        .service-card { background: var(--card-item-bg); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color); display: flex; gap: 20px; }
+
+        /* REFERENCES */
+        .ref-card { background: var(--card-item-bg); padding: 40px 20px 20px; border-radius: 15px; border: 1px solid var(--border-color); margin-top: 40px; position: relative; }
+        .ref-avatar { position: absolute; top: -30px; left: 20px; width: 60px; height: 60px; border-radius: 15px; border: 2px solid var(--border-color); background: #444; overflow: hidden; }
+        .ref-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* TIMELINE */
+        .timeline { margin-bottom: 30px; }
+        .title-wrapper { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+        .timeline-list { list-style: none; margin-left: 45px; border-left: 1px solid var(--border-color); }
+        .timeline-item { position: relative; padding-left: 30px; margin-bottom: 25px; }
+        .timeline-item::before { content: ''; position: absolute; top: 5px; left: -6px; width: 12px; height: 12px; background: var(--accent-gold); border-radius: 50%; box-shadow: 0 0 0 4px var(--card-bg); }
+        .timeline-item-title { font-size: 1rem; color: var(--text-white); }
+        .timeline-item span { color: var(--accent-gold); font-size: 0.9rem; }
+        .timeline-text { color: var(--text-dim); font-size: 0.85rem; margin-top: 5px; }
+
+        /* SKILLS */
+        .skills-list { list-style: none; padding: 25px; background: var(--card-item-bg); border-radius: 15px; border: 1px solid var(--border-color); }
+        .skills-item { margin-bottom: 20px; }
+        .skill-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .skill-progress-bg { background: var(--border-color); height: 8px; border-radius: 10px; width: 100%; }
+        .skill-progress-fill { background: var(--accent-gold); height: 100%; border-radius: 10px; }
+
+        /* PORTFOLIO MODAL */
+        .project-card { background: var(--card-item-bg); border-radius: 15px; overflow: hidden; border: 1px solid var(--border-color); cursor: pointer; position: relative; }
+        .project-img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 180px; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.3s; }
+        .project-card:hover .project-overlay { opacity: 1; }
+        .project-info { padding: 15px; }
+
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        .modal-content { max-width: 90%; max-height: 80%; border-radius: 10px; }
+        .close-modal { position: absolute; top: 20px; right: 30px; font-size: 40px; color: white; cursor: pointer; }
+
+        @media (max-width: 900px) {
+            .main-container { flex-direction: column; }
+            .sidebar { width: 100%; position: relative; top: 0; }
+            .nav-tabs { position: fixed; bottom: 0; top: auto; right: 0; left: 0; width: 100%; border-radius: 20px 20px 0 0; justify-content: center; }
+            body { padding-bottom: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="profile-img">
+                <img src="images/profilepic.jpg" alt="Christian Ulayan">
+            </div>
+            <h2 class="name">Christian Ulayan</h2>
+            <span class="title-badge">Consumer Care Officer</span>
+
+            <div class="info-list">
+                <div class="info-item">
+                    <div class="icon">✉</div>
+                    <a href="mailto:Ulayanian@gmail.com" class="contact-link">Ulayanian@gmail.com</a>
+                </div>
+                <div class="info-item">
+                    <div class="icon">📱</div>
+                    <div class="info-content"><p>Phone</p><span>09551267925</span></div>
+                </div>
+                <div class="info-item">
+                    <div class="icon">📍</div>
+                    <div class="info-content"><p>Location</p><span>Pasig City</span></div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-card">
+            <nav class="nav-tabs">
+                <div class="nav-link active" onclick="switchPage('about', this)">About</div>
+                <div class="nav-link" onclick="switchPage('resume', this)">Resume</div>
+                <div class="nav-link" onclick="switchPage('portfolio', this)">Portfolio</div>
+            </nav>
+
+            <div id="about" class="page active">
+                <h2 class="section-title">About Me</h2>
+                <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.8;">
+                    Dedicated and detail-oriented IT Support professional with experience in handling system issues, user account management, and transaction-related concerns. Skilled in troubleshooting applications, coordinating with internal teams, and providing clear, professional communication to clients and stakeholders.
+                </p>
+
+                 <h3 style="margin-top: 40px; margin-bottom: 20px;">What I'm Doing</h3>
+
+                <div class="bento-grid">
+
+                    <div class="service-card">
+
+                        <div class="service-icon-box">
+                         <img src="C:\Users\Lenovo\OneDrive - AGRIBUSINESS RURAL BANK INC\Desktop\PRIVATE FILES\Getting Started\more\images\iconcs.svg" alt="Others icon" width="40">
+                        </div>
+
+                        <div>
+
+                            <h4>Customer Support</h4>
+
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">Resolving inquiries and ensuring a positive user experience.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="service-card">
+
+                         <div class="service-icon-box">
+                         <img src="C:\Users\Lenovo\OneDrive - AGRIBUSINESS RURAL BANK INC\Desktop\PRIVATE FILES\Getting Started\more\images\icon-app.svg" alt="Others icon" width="40">
+                        </div>
+
+                        <div>
+
+                            <h4>App Management</h4>
+
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">Handling mobile support, updates, and user issue resolution.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="service-card">
+
+                        <div class="service-icon-box">
+                         <img src="C:\Users\Lenovo\OneDrive - AGRIBUSINESS RURAL BANK INC\Desktop\PRIVATE FILES\Getting Started\more\images\icon-pmo.svg" alt="Others icon" width="40">
+                        </div>
+
+                        <div>
+
+                            <h4>Project Management</h4>
+
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">Planning and monitoring projects to meet critical deadlines.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="service-card">
+
+                        <div class="service-icon-box">
+                         <img src="C:\Users\Lenovo\OneDrive - AGRIBUSINESS RURAL BANK INC\Desktop\PRIVATE FILES\Getting Started\more\images\icon-hd.svg" alt="Others icon" width="40">
+                        </div>
+                        <div>
+
+                            <h4>Helpdesk Specialist</h4>
+
+                            <p style="font-size: 0.85rem; color: var(--text-dim);">Technical support and troubleshooting for smooth operations.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <h3 style="margin-top: 45px; margin-bottom: 20px;">References</h3>
+                <div class="bento-grid">
+                    <div class="ref-card">
+                        <div class="ref-avatar"><img src="images/avatar-1.png" alt="Fritz"></div>
+                        <h4>Fritz Jerald Principe</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 10px;">Department Head. Provided expert guidance, supervision, and leadership during my tenure.</p>
+                    </div>
+                    <div class="ref-card">
+                        <div class="ref-avatar"><img src="images/avatar-2.png" alt="Joey"></div>
+                        <h4>Joey Santiago</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 10px;">Senior Developer. Provided technical mentorship and professional development support.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resume" class="page">
+                <h2 class="section-title">Resume</h2>
+
+                <section class="timeline">
+                    <div class="title-wrapper"><div class="icon">📖</div><h3>Education</h3></div>
+                    <ol class="timeline-list">
+                        <li class="timeline-item">
+                            <h4 class="timeline-item-title">Mindoro State University</h4>
+                            <span>2017 — 2022</span>
+                            <p class="timeline-text">Bachelor of Arts in English Language</p>
+                        </li>
+                        <li class="timeline-item">
+                            <h4 class="timeline-item-title">Baco Technical Vocational School</h4>
+                            <span>2018</span>
+                            <p class="timeline-text">Computer System Servicing NCII</p>
+                        </li>
+                        <li class="timeline-item">
+                            <h4 class="timeline-item-title">Mary Help School</h4>
+                            <span>2018 — 2019</span>
+                            <p class="timeline-text">Chicken Poultry Production NCII</p>
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="timeline">
+                    <div class="title-wrapper"><div class="icon">💼</div><h3>Experience</h3></div>
+                    <ol class="timeline-list">
+                        <li class="timeline-item">
+                            <h4 class="timeline-item-title">Project Management Officer</h4>
+                            <span>2024 — 2026</span>
+                            <p class="timeline-text">Supports and monitors projects to ensure they are completed on time.</p>
+                        </li>
+                        <li class="timeline-item">
+                            <h4 class="timeline-item-title">Consumer Care Associate</h4>
+                            <span>2023 — 2024</span>
+                            <p class="timeline-text">Provide support and accommodate concern, request and complaint.</p>
+                        </li>
+                        <li class="timeline-item">
+                            <h4 class="timeline-item-title">Field Marketing Representative</h4>
+                            <span>2022 — 2023</span>
+                            <p class="timeline-text">Provide Client for Use of Mobile App, User Interface, Download and Enrollment.</p>
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="skill">
+                    <h3 style="margin-bottom: 20px;">My Skills</h3>
+                    <ul class="skills-list">
+                        <li class="skills-item">
+                            <div class="skill-header"><h5>Customer Support</h5><span>90%</span></div>
+                            <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+                        </li>
+                        <li class="skills-item">
+                            <div class="skill-header"><h5>Mobile App Management</h5><span>85%</span></div>
+                            <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+                        </li>
+                        <li class="skills-item">
+                            <div class="skill-header"><h5>Project Management</h5><span>80%</span></div>
+                            <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 80%;"></div></div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <div id="portfolio" class="page">
+                <h2 class="section-title">Portfolio</h2>
+                <div class="bento-grid">
+                    <div class="project-card" onclick="openModal('C:/Users/Lenovo/OneDrive - AGRIBUSINESS RURAL BANK INC/Desktop/PRIVATE FILES/Getting Started/more/images/Agribank Online V1.jpg')">
+                        <div class="project-overlay"><span>👁️ View</span></div>
+                        <img src="C:\Users\Lenovo\OneDrive - AGRIBUSINESS RURAL BANK INC\Desktop\PRIVATE FILES\Getting Started\more\images\Agribank Online V1.jpg" class="project-img" alt="Agribank Pay">
+                        <div class="project-info">
+                            <h4>Agribank Online V1</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-dim);">Geniusto/Mobile App</p>
+                        </div>
+                    </div>
+                     <div class="project-card" onclick="openModal('C:/Users/Lenovo/OneDrive - AGRIBUSINESS RURAL BANK INC/Desktop/PRIVATE FILES/Getting Started/more/images/Agribank Online V2.jpg')">
+                        <div class="project-overlay"><span>👁️ View</span></div>
+                        <img src="C:/Users/Lenovo/OneDrive - AGRIBUSINESS RURAL BANK INC/Desktop/PRIVATE FILES/Getting Started/more/images/Agribank Online V2.jpg" class="project-img" alt="Agribank Pay">
+                        <div class="project-info">
+                            <h4>Agribank Online V2</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-dim);">NextBank/Mobile App</p>
+                        </div>
+                    </div>
+                     <div class="project-card" onclick="openModal('C:/Users/Lenovo/OneDrive - AGRIBUSINESS RURAL BANK INC/Desktop/PRIVATE FILES/Getting Started/more/images/Agribank_pay.jpg')">
+                        <div class="project-overlay"><span>👁️ View</span></div>
+                        <img src="C:/Users/Lenovo/OneDrive - AGRIBUSINESS RURAL BANK INC/Desktop/PRIVATE FILES/Getting Started/more/images/Agribank_pay.jpg" class="project-img" alt="Agribank Pay">
+                        <div class="project-info">
+                            <h4>Agribank Pay</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-dim);">Etap/Ecpay</p>
+                        </div>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        function switchPage(pageId, element) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            element.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function openModal(imgSrc) {
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("img01");
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
