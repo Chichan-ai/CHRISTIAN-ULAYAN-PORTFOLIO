@@ -140,6 +140,20 @@
         .modal-content { max-width: 90%; max-height: 80%; border-radius: 10px; }
         .close-modal { position: absolute; top: 20px; right: 30px; font-size: 40px; color: white; cursor: pointer; }
 
+        .contact-link {
+         color: var(--text-white); /* O gamitin ang #ffffff */
+         text-decoration: none;    /* Para mawala ang underline */
+         font-size: 0.85rem;
+         transition: 0.3s;
+        }
+
+        .contact-link:hover {
+         color: var(--accent-gold); /* Magpapalit ng kulay pag tinapat ang mouse */
+        }
+
+        .contact-link:hover {
+         color: var(--accent-gold); /* Magpapalit ng kulay pag tinapat ang mouse */
+        }
         @media (max-width: 900px) {
             .main-container { flex-direction: column; }
             .sidebar { width: 100%; position: relative; top: 0; }
@@ -159,10 +173,12 @@
             <span class="title-badge">Consumer Care Officer</span>
 
             <div class="info-list">
-                <div class="info-item">
-                    <div class="icon">✉</div>
-                    <a href="mailto:Ulayanian@gmail.com" class="contact-link">Ulayanian@gmail.com</a>
+                <div class="icon">✉</div>
+                <div class="info-content">
+                  <p>Email</p>
+                  <a href="mailto:Ulayanian@gmail.com" class="contact-link">Ulayanian@gmail.com</a>
                 </div>
+            </div>
                 <div class="info-item">
                     <div class="icon">📱</div>
                     <div class="info-content"><p>Phone</p><span>09551267925</span></div>
@@ -188,72 +204,46 @@
                 </p>
 
                  <h3 style="margin-top: 40px; margin-bottom: 20px;">What I'm Doing</h3>
-
                 <div class="bento-grid">
-
                     <div class="service-card">
-
                         <div class="service-icon-box">
                          <img src="C:\Users\Lenovo\OneDrive - AGRIBUSINESS RURAL BANK INC\Desktop\PRIVATE FILES\Getting Started\more\images\iconcs.svg" alt="Others icon" width="40">
                         </div>
-
                         <div>
-
                             <h4>Customer Support</h4>
-
                             <p style="font-size: 0.85rem; color: var(--text-dim);">Resolving inquiries and ensuring a positive user experience.</p>
-
                         </div>
-
                     </div>
 
-                    <div class="service-card">
-
+                    <div class="service-card"
                          <div class="service-icon-box">
                          <img src="C:\Users\Lenovo\OneDrive - AGRIBUSINESS RURAL BANK INC\Desktop\PRIVATE FILES\Getting Started\more\images\icon-app.svg" alt="Others icon" width="40">
                         </div>
-
                         <div>
-
                             <h4>App Management</h4>
-
                             <p style="font-size: 0.85rem; color: var(--text-dim);">Handling mobile support, updates, and user issue resolution.</p>
-
                         </div>
-
                     </div>
 
                     <div class="service-card">
-
                         <div class="service-icon-box">
                          <img src="C:\Users\Lenovo\OneDrive - AGRIBUSINESS RURAL BANK INC\Desktop\PRIVATE FILES\Getting Started\more\images\icon-pmo.svg" alt="Others icon" width="40">
                         </div>
-
                         <div>
-
                             <h4>Project Management</h4>
-
                             <p style="font-size: 0.85rem; color: var(--text-dim);">Planning and monitoring projects to meet critical deadlines.</p>
-
                         </div>
-
                     </div>
-
+                
                     <div class="service-card">
-
                         <div class="service-icon-box">
                          <img src="C:\Users\Lenovo\OneDrive - AGRIBUSINESS RURAL BANK INC\Desktop\PRIVATE FILES\Getting Started\more\images\icon-hd.svg" alt="Others icon" width="40">
                         </div>
                         <div>
-
                             <h4>Helpdesk Specialist</h4>
-
                             <p style="font-size: 0.85rem; color: var(--text-dim);">Technical support and troubleshooting for smooth operations.</p>
-
                         </div>
-
                     </div>
-
                 </div>
 
                 <h3 style="margin-top: 45px; margin-bottom: 20px;">References</h3>
@@ -395,4 +385,5 @@
         }
     </script>
 </body>
+
 </html>
