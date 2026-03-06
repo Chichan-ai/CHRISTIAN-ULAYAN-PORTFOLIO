@@ -4,7 +4,7 @@
          --card-bg: #1e1e1f;
          --card-item-bg: #2b2b2c;
          --border-color: #383838;
-         --accent-gold: #faec2f;
+         --accent-gold: #c7bb0ffa;
          --text-white: #fafafa;
          --text-gray: #d6d6d6;
          --text-dim: #9e9e9e;
@@ -189,8 +189,8 @@
 
 
         /**
-        * #clients 
-        */
+         * #clients 
+         */
 
         .clients { margin-bottom: 15px; }
 
@@ -200,10 +200,14 @@
          align-items: flex-start;
          gap: 15px;
          margin: 0 -15px;
-         padding: 25px;
-         padding-bottom: 25px;
-         overflow-x: auto;
+         padding: 20px;
+         padding-bottom: 20px;
+         overflow-x: auto; /* This element is the one that scrolls */
          list-style: none;
+  
+        /* Firefox support */
+         scrollbar-width: thin;
+         scrollbar-color: var(--accent-gold) var(--card-bg);
         }
 
         .clients-item {
@@ -214,54 +218,142 @@
         .clients-item img {
          width: 80%;
          filter: grayscale(1);
-         transition: var(--transition-1);
-        }
-
-        .clients-item img:hover { filter: grayscale(0); }
-        
-        /* Custom Scrollbar Styling */
-        .clients-list-container::-webkit-scrollbar-thumb {
-         background: #ffdb70; 
-         border-radius: 1px;
-         border: 1px solid #1e1e1f;
-        }
-
-        .clients-list-container::-webkit-scrollbar {
-         height: 3px;    /* ⬅️ ADJUST THIS: Smaller number = thinner bar */
-         width: 3px;     /* For vertical bars if needed */
-        }
-
-        .clients-list-container::-webkit-scrollbar-track {
-         background: #1e1e1f; 
-         border-radius: 1px;
-        }
-
-        .clients-list-container::-webkit-scrollbar-thumb {
-         background: #ffdb70; /* Use your accent color */
-         border-radius: 1px;
-        }
-        
-        .clients-list-container::-webkit-scrollbar-thumb:hover {
-         background: #ceb158;
-        }
- 
-        .social-list {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         gap: 15px;
-         margin-top: 30px;
-         padding-bottom: 5px;
-
-        }
-
-        .social-item {
-         color: var(--text-gray); /* Or use a specific hex like #757575 */
-         font-size: 20px;
          transition: 0.3s ease;
         }
 
-        .social-item:hover {
-         color: #ffdb70; /* Your theme's highlight color */
-         transform: translateY(-2px);
+        .clients-item img:hover { filter: grayscale(0); }
+
+        /* Custom Scrollbar Styling - Targets .clients-list */
+        .clients-list::-webkit-scrollbar {
+         height: 4px;    /* This makes it thin. Increase to 6px if too small */
         }
+
+        .clients-list::-webkit-scrollbar-track {
+         background: var(--card-bg); 
+         border-radius: 10px;
+         padding: 20px;
+        }
+
+        .clients-list::-webkit-scrollbar-thumb {
+         background: var(--border-color); 
+         border-radius: 10px;
+        }
+
+        .clients-list::-webkit-scrollbar-thumb:hover {
+         background: var(--accent-gold);
+        }
+
+        /*Reference*/
+        
+        :root {
+         --bg-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsl(0, 0%, 18%) 100%);
+         --jet: hsl(0, 0%, 22%);
+         --onyx: hsl(240, 1%, 17%);
+         --eerie-black-2: hsl(240, 2%, 12%);
+         --smoky-black: hsl(0, 0%, 7%);
+         --orange-yellow-crayola: hsl(45, 100%, 72%);
+         --text-gray: hsl(0, 0%, 70%);
+         --white: #ffffff;
+        }
+
+        /* 1. The Scroll Container */
+        .references-scroll-container {
+         display: flex;
+         overflow-x: auto; /* Enables horizontal scroll */
+         overflow-y: hidden;
+         padding: 20px 0;
+         gap: 20px;
+         scroll-behavior: smooth;
+         -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+         scrollbar-width: thin;
+         scrollbar-color: var(--accent-gold) var(--card-bg);
+         padding: 20px;
+        }
+
+        /* 2. The Inner Grid (Force single row) */
+        .ref-grid {
+         display: flex;
+         flex-wrap: nowrap; /* Prevents cards from dropping to the next line */
+         gap: 20px;
+        }
+
+        /* 3. The Cards */
+       /* Update this in your Reference section */
+        .ref-card {
+         flex: 0 0 auto;
+         width: 280px;
+         background: var(--card-item-bg); /* Changed from gradient to variable */
+         padding: 30px;
+         border-radius: 20px;
+         border: 1px solid var(--border-color); /* Matches your main theme */
+         text-align: justify;
+         transition: transform 0.3s ease;
+        }
+
+        .ref-card:hover {
+         transform: translateY(-5px);
+         border-color: var(--accent-gold);
+        }
+
+        .ref-avatar img {
+         width: 60px;
+         height: 60px;
+         border-radius: 15px;
+         margin-bottom: 15px;
+         object-fit: cover;
+         align-content: center;
+         background:var(--card-item-bg);
+        }
+
+        .view-msg-btn {
+         margin-top: 15px;
+         background: var(--orange-yellow-crayola);
+         color: var(--smoky-black);
+         border: none;
+         padding: 8px 20px;
+         border-radius: 10px;
+         font-size: 0.85rem;
+         cursor: pointer;
+         font-weight: 600;
+        }
+
+        /* Custom Scrollbar Styling */
+        .has-scrollbar::-webkit-scrollbar {
+         height: 8px; /* Height of horizontal scrollbar */
+         padding: 20px;
+        }
+        .has-scrollbar::-webkit-scrollbar-track {
+         background: var(--onyx);
+         border-radius: 10px;
+        }
+
+        .has-scrollbar::-webkit-scrollbar-thumb {
+         background: var(--orange-yellow-crayola);
+         border-radius: 10px;
+        }
+        .has-scrollbar::-webkit-scrollbar-thumb:hover {
+         background: var(--accent-gold);
+        }
+
+        /* Modal Styles */
+        .modal {
+         display: none;
+         position: fixed;
+         inset: 0;
+         background: rgba(0, 0, 0, 0.8);
+         z-index: 1000;
+         justify-content: center;
+         align-items: justify;
+         padding: 20px;
+        }
+
+        .modal-container {
+         background: var(--eerie-black-2);
+         padding: 30px;
+         border-radius: 20px;
+         max-width: 500px;
+         width: 100%;
+         border: 1px solid var(--jet);
+         position: relative;
+        }
+    
