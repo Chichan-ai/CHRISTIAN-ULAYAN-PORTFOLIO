@@ -106,3 +106,12 @@ themeToggle.addEventListener('click', () => {
         themeIcon.textContent = '🌙';
     }
 });
+function openRefModal(name, message) {
+    document.getElementById('modalName').innerText = name;
+    document.getElementById('modalMessage').innerText = message;
+    document.getElementById('refModal').style.display = "flex";
+}
+
+function closeRefModal() {
+    document.getElementById('refModal').style.display = "none";
+}
