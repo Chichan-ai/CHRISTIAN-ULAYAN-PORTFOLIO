@@ -105,21 +105,37 @@
                     </div>
                 </div>
 
-                <h3 style="margin-top: 45px; margin-bottom: 20px;">References</h3>
-                <div class="grid-container">
-                    <div class="ref-card">
-                        <div class="ref-avatar"><img src="images/avatar-1.png" alt="Fritz"></div>
-                        <h4>Fritz Jerald Principe</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 10px;">Department Head. Provided expert guidance, supervision, and leadership during my tenure.</p>
+                <h3 style="margin-top: 40px; margin-bottom: 20px;">References</h3>
+                    <div class="grid-container">
+                        <ul class="references-scroll-container">
+                            <div class="ref-card" onclick="openRefModal('Fritz Jerald Principe served as my Department Head and provided guidance, supervision, and professional support throughout my tenure. He may be contacted for reference regarding my work performance, skills, and professional conduct.')">
+                                <div class="ref-avatar"><img src="images/avatar-1.png" alt="Fritz"></div>
+                                <h4>Fritz Jerald Principe</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 10px;">DFritz Jerald Principe served as my Department Head and provided guidance, supervision, and professional support throughout my tenure. He may be contacted for reference regarding my work performance, skills, and professional conduct.</p>
+                            </div>
+                            <div class="ref-card" onclick="openRefModal('Joey Santiago served as my Senior Developer and provided guidance, mentorship, and professional supervision throughout my work. He can be contacted for reference regarding my skills, work performance, and professional conduct.')">
+                                <div class="ref-avatar"><img src="images/avatar-4.png" alt="Joey"></div>
+                                <h4>Joey Santiago</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 10px;">Joey Santiago served as my Senior Developer and provided guidance, mentorship, and professional supervision throughout my work. He can be contacted for reference regarding my skills, work performance, and professional conduct.</p>
+                            </div>
+                            <div class="ref-card" onclick="openRefModal('Arcelito Delos Santos served as my Branch Head and provided professional guidance and supervision. He may be contacted as one of my references regarding my work performance and professional conduct.')">
+                                <div class="ref-avatar"><img src="images/avatar-4.png" alt="Joey"></div>
+                                <h4>Arcelito Delos Santos</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 10px;">Arcelito Delos Santos served as my Branch Head and provided professional guidance and supervision. He may be contacted as one of my references regarding my work performance and professional conduct.</p>
+                            </div>
+                        </ul>
+                            
+                        <div id="refModal" class="modal" onclick="closeRefModal()">
+                            <div class="modal-container" onclick="event.stopPropagation()">
+                            <h3 id="modalName" style="color: var(--orange-yellow-crayola); margin: 0;"></h3>
+                            <hr style="margin: 15px 0; border: 0.5px solid var(--jet);">
+                            <p id="modalMessage" style="color: var(--text-gray); line-height: 1.6;"></p>
+                        </div>
                     </div>
-                    <div class="ref-card">
-                        <div class="ref-avatar"><img src="images/avatar-2.png" alt="Joey"></div>
-                        <h4>Joey Santiago</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 10px;">Senior Developer. Provided technical mentorship and professional development support.</p>
-                    </div>
+
                 </div>
 
-                <h3 style="margin-top: 45px; margin-bottom: 20px;">Partners</h3>
+                <h3 style="margin-top: 40px; margin-bottom: 20px;">Partners</h3>
 
                 <div class="clients-list-container">
                     <ul class="clients-list has-scrollbar">
@@ -217,7 +233,7 @@
                 <h2 class="section-title">Portfolio</h2>
                 <div class="grid-container">
                     <div class="project-card" onclick="openModal('images/Agribank Online V1.jpg')">
-                        <div class="project-overlay"><span>👁️ View</span></div>
+                        <div class="project-overlay"><ion-icon name="eye-outline"></ion-icon></div>
                         <img src="images/Agribank Online V1.jpg" class="project-img" alt="Agribank V1">
                         <div class="project-info">
                             <h4>Agribank Online V1</h4>
@@ -225,7 +241,7 @@
                         </div>
                     </div>
                     <div class="project-card" onclick="openModal('images/Agribank Online V2.jpg')">
-                        <div class="project-overlay"><span>👁️ View</span></div>
+                          <div class="project-overlay"><ion-icon name="eye-outline"></ion-icon></div>
                         <img src="images/Agribank Online V2.jpg" class="project-img" alt="Agribank V2">
                         <div class="project-info">
                             <h4>Agribank Online V2</h4>
@@ -233,7 +249,7 @@
                         </div>
                     </div>
                     <div class="project-card" onclick="openModal('images/Agribank_pay.jpg')">
-                        <div class="project-overlay"><span>👁️ View</span></div>
+                          <div class="project-overlay"><ion-icon name="eye-outline"></ion-icon></div>
                         <img src="images/Agribank_pay.jpg" class="project-img" alt="Agribank Pay">
                         <div class="project-info">
                             <h4>Agribank Pay</h4>
@@ -257,4 +273,3 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
-
