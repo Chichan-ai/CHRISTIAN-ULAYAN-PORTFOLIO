@@ -83,6 +83,7 @@ document.addEventListener('keydown', (event) => {
         closeModal();
     }
 });
+
 // Function to toggle theme
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
@@ -106,12 +107,38 @@ themeToggle.addEventListener('click', () => {
         themeIcon.textContent = '🌙';
     }
 });
+
 function openRefModal(name, message) {
-    document.getElementById('modalName').innerText = name;
-    document.getElementById('modalMessage').innerText = message;
-    document.getElementById('refModal').style.display = "flex";
+    const modal = document.getElementById('refModal');
+    const modalName = document.getElementById('modalName');
+    const modalMessage = document.getElementById('modalMessage');
+
+    // Assign the values to the modal elements
+    modalName.textContent = name;
+    modalMessage.textContent = message;
+
+    // Show the modal
+    modal.style.display = 'flex'; 
 }
 
 function closeRefModal() {
-    document.getElementById('refModal').style.display = "none";
+    document.getElementById('refModal').style.display = 'none';
 }
+
+function openRefModal(name, description) {
+  document.getElementById('modalName').textContent = name;
+  document.getElementById('modalMessage').textContent = description;
+  document.getElementById('refModal').style.display = 'flex';
+}
+
+document.querySelectorAll('.clients-item').forEach(item => {
+  item.addEventListener('click', function() {
+    // Toggle the zoom class on the clicked item
+    this.classList.toggle('active-zoom');
+    
+    // Optional: Remove zoom from other items when one is clicked
+    document.querySelectorAll('.clients-item').forEach(other => {
+      if (other !== this) other.classList.remove('active-zoom');
+    });
+  });
+});
